@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">LoginSignup</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="no_account_yet_create_one">No account yet? Create one</string>
+    <string name="login">LOGIN</string>
+    <string name="logo">Logo</string>
+    <string name="already_a_member_login">Already a member? Login</string>
+    <string name="name">Name</string>
+    <string name="create_account">Create Account</string>
+    <string name="eve_holt_reqres_in">eve.holt@reqres.in</string>
+    <string name="pistol">pistol</string>
+    <string name="server_client_id">82710412462-4ohgsrnjmrh5qth7ksmkfftcm8q9c0mi.apps.googleusercontent.com
+</string>
+
+    <string name="facebook_app_id">477979453044351</string>
+    <string name="fb_login_protocol_scheme">fb477979453044351</string>
+
+</resources>
