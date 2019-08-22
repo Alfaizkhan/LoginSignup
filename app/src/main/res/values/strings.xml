@@ -10,14 +10,14 @@
     <string name="create_account">Create Account</string>
     <string name="eve_holt_reqres_in">eve.holt@reqres.in</string>
     <string name="pistol">pistol</string>
-    <string name="server_client_id">82710412462-4ohgsrnjmrh5qth7ksmkfftcm8q9c0mi.apps.googleusercontent.com
+    <string name="server_client_id">YOUR_GOOGLE_API_CLIENT_ID
 </string>
 
-    <string name="facebook_app_id">477979453044351</string>
-    <string name="fb_login_protocol_scheme">fb477979453044351</string>
+    <string name="facebook_app_id">YOUR_FB_APP_ID</string>
+    <string name="fb_login_protocol_scheme">YOUR_FB_APP_PROTOCOL_ID</string>
 
-    <string name="twitter_consumer_key">Z5zhWRaCQgxY8uQ0yh2gjaWJA </string>
-    <string name="twitter_consumer_secret">H27NTn7u5qnuHtAKVRiT7XLtwZk4lKd716FtjSV9ESl3DxHdIP</string>
+    <string name="twitter_consumer_key">YOUR_TWITTER_CONSUMER_</string>
+    <string name="twitter_consumer_secret">YOUR_TWITTER_CONSUMER_SECRET_KEY</string>
 
 
 </resources>
