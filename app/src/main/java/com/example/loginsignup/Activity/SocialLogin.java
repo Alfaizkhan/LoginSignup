@@ -1,12 +1,12 @@
 package com.example.loginsignup.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.loginsignup.R;
 import com.facebook.AccessToken;
@@ -22,6 +22,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.DefaultLogger;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterAuthToken;
+import com.twitter.sdk.android.core.TwitterConfig;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+
+import static com.twitter.sdk.android.core.Twitter.initialize;
 
 public class SocialLogin extends AppCompatActivity {
 
@@ -35,15 +47,21 @@ public class SocialLogin extends AppCompatActivity {
     CallbackManager callbackManager;
     int FB_SIGN_IN = 999;
 
+    //for Twitter Login
+    TwitterLoginButton twitterLoginButton;
+    int TW_SIGN_IN = 555;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initialize(this);
         setContentView(R.layout.activity_social_login);
 
         signInButton = findViewById(R.id.sign_in_button);
         fbLoginButton = findViewById(R.id.fbSigIn);
+        twitterLoginButton = findViewById(R.id.twitterlogin);
 
         // Creating CallbackManager
         callbackManager = CallbackManager.Factory.create();
@@ -82,8 +100,43 @@ public class SocialLogin extends AppCompatActivity {
 
             }
         });
+
+        // For Twitter
+        initialize(this);
+        TwitterAuthConfig twitterAuthConfig= new TwitterAuthConfig("CONSUMER_KEY", "CONSUMER_SECRET");
+        TwitterConfig config = new TwitterConfig.Builder(this)
+                .logger(new DefaultLogger(Log.DEBUG))
+                .twitterAuthConfig(twitterAuthConfig)
+                .debug(true)
+                .build();
+        initialize(config);
+
+        twitterLoginButton.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+
+                TwitterSession session = TwitterCore.getInstance().getSessionManager().getActiveSession();
+                TwitterAuthToken authToken = session.getAuthToken();
+                String token = authToken.token;
+                String secret = authToken.secret;
+
+
+                login(session);
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                Toast.makeText(SocialLogin.this, "Authentication failed! => " + exception.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
+    private void login(TwitterSession session) {
+
+        Intent intent = new Intent(SocialLogin.this, MainActivity.class);
+        startActivity(intent);
+    }
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -98,9 +151,12 @@ public class SocialLogin extends AppCompatActivity {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
-        else {
+        else if (requestCode == FB_SIGN_IN){
                 callbackManager.onActivityResult(requestCode, resultCode, data);
             }
+        else {
+            twitterLoginButton.onActivityResult(requestCode, resultCode, data);
+        }
         }
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
