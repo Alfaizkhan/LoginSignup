@@ -1,7 +1,7 @@
 # LoginSignup-Android
 
 
-<img src="https://github.com/Alfaizkhan/LoginSignup/blob/master/images/Screenshot_1566384244.png" width="256" height="2556">
+<img src="https://github.com/Alfaizkhan/LoginSignup/blob/master/images/Screenshot_1566384244.png" width="1440" height="2560">
 
 
 
