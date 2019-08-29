@@ -10,8 +10,7 @@
     <string name="create_account">Create Account</string>
     <string name="eve_holt_reqres_in">eve.holt@reqres.in</string>
     <string name="pistol">pistol</string>
-    <string name="server_client_id">YOUR_GOOGLE_API_CLIENT_ID
-</string>
+    <string name="server_client_id">YOUR_GOOGLE_API_CLIENT_ID</string>
 
     <string name="facebook_app_id">YOUR_FB_APP_ID</string>
     <string name="fb_login_protocol_scheme">YOUR_FB_APP_PROTOCOL_ID</string>
