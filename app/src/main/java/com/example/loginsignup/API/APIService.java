@@ -1,11 +1,7 @@
 package com.example.loginsignup.API;
 
-
-import com.example.loginsignup.Model.Data;
 import com.example.loginsignup.Model.User;
 import com.example.loginsignup.Model.UserList;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

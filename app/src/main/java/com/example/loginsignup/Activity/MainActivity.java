@@ -1,11 +1,9 @@
 package com.example.loginsignup.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -18,9 +16,6 @@ import com.example.loginsignup.Adapter.DataViewModel;
 import com.example.loginsignup.Model.Data;
 import com.example.loginsignup.R;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 
 import java.util.List;
